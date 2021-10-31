@@ -86,7 +86,7 @@ function createContainers(data) {
         const containerHeader = createContainerHeader(prediction)
         const table = document.createElement('table')
         const tr = document.createElement('tr')
-        tr.innerHTML = `<th>Name</th><th>Forecast accuracy</th><th>Forecast</th>`
+        tr.innerHTML = `<th>Name</th><th>Forecast accuracy (statistics from ${accuracyTotems[0].length} matches)</th><th>Forecast</th>`
         table.append(tr)
         appendPredictions(accuracyTotems, table, prediction)
         container.className = 'container'
