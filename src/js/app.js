@@ -81,7 +81,7 @@ function createContainers(data) {
         const hour = getValidateDateValue(prediction.hour)
         const minute = getValidateDateValue(prediction.minute)
         containerTitle.innerHTML = 
-        `<span> ${prediction.teamHome} vs ${prediction.teamAway}</span> <br/> ${prediction.type}, ${prediction.city}, ${prediction.date}, ${hour}:${minute}`
+        `<span> ${prediction.teamHome} vs ${prediction.teamAway}</span> <br/> ${prediction.type}, ${prediction.city}, ${prediction.date}, ${hour}:${minute} UTC`
         const containerFooter = document.createElement('div')
         const containerHeader = createContainerHeader(prediction)
         const table = document.createElement('table')
