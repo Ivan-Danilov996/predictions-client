@@ -81,7 +81,7 @@ function createContainers(data) {
         const hour = getValidateDateValue(prediction.hour)
         const minute = getValidateDateValue(prediction.minute)
         containerTitle.innerHTML = 
-        `<span> ${prediction.teamHome} vs ${prediction.teamAway}</span> <br/> ${prediction.type}, ${prediction.city}, ${prediction.date}, ${hour}:${minute} UTC`
+        `<span> ${prediction.teamHome} vs ${prediction.teamAway}</span> <br/> ${prediction.type === 'Footbal'? 'Football' : prediction.type}, ${prediction.city}, ${prediction.date}, ${hour}:${minute} UTC`
         const containerFooter = document.createElement('div')
         const containerHeader = createContainerHeader(prediction)
         const table = document.createElement('table')
@@ -320,9 +320,30 @@ function addListeners() {
     })
 }
 
+function clickHandlerBtn(e) {
+    if (!(document.querySelector('#footbal.active') || document.querySelector('#nhl.active') || document.querySelector('#nba.active'))) {
+        return null
+    }
+    const array = []
+    Array.from(document.querySelectorAll('tr')).forEach(tr => {
+        const [name, progress, team]  = [...tr.querySelectorAll("td")]
+        if (team && team.textContent === "Manchester City") {
+            array.push(name.textContent)
+        }
+    })
+    console.log(array)
+}
+
 
 fetchComingEvents().then(data => {
     state = data   
     addListeners()
     appendResults()
+    const btn = document.querySelector('.click')
+    btn.addEventListener('click', clickHandlerBtn)
 })
+
+
+
+
+
